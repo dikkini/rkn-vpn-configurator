@@ -14,19 +14,23 @@ Generate ovpn config on-the-fly.
   - todo: collect it from additional sources
     - habrahabr (2 pages)
 
-## rest.py
+## app.py
 
-REST-full (will be) API. Have only one route (`/`) with only one method (`POST`).
+REST-full (will be) API. Have only one route (`/`) with two methods (`GET`, `POST`).
+
+- `GET` for README.md 2 html
+- `POST` with `file` multipart/formdata for extend your template
 
 #### bash use:
 
-    curl -XPOST -F 'file=@openvpn.conf' http://127.0.0.1:8080/
+    curl http://rkn-vpn-configurator-rkn-vpn-configurator.193b.starter-ca-central-1.openshiftapps.com/
+    curl -XPOST -F 'file=@openvpn.conf' http://rkn-vpn-configurator-rkn-vpn-configurator.193b.starter-ca-central-1.openshiftapps.com/
 
 #### python-way:
 
     import requests
     r = requests.post(
-      'http://127.0.0.1:8080/',
+      'http://rkn-vpn-configurator-rkn-vpn-configurator.193b.starter-ca-central-1.openshiftapps.com/',
       files = {
         'file': open('openvpn.conf', 'rb')
       }
